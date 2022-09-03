@@ -6,13 +6,20 @@
 package com.mycompany.hopital;
 // @author Billy
 import java.util.Scanner;
+ 
 public class Hopital {
+static Paciente[] pacientes = new Paciente[1];
+static Paciente[] savePaciente = new Paciente[1];
+static Nurse[] enfermeras = new Nurse[1];
+static Nurse[] saveNurse = new Nurse[1];
+static Doctor[] doc = new Doctor[1];
+static Doctor[] saveDoc = new Doctor[1];
     public static void main(String[] args) {
          Scanner scan = new Scanner(System.in);
          boolean salir = false;
-         Menu();
-         String opcion = scan.nextLine();
          while(!salir){
+          Menu();
+          String opcion = scan.nextLine();
          switch(opcion){
         case "0":
            System.out.println("\nBye, El programa finalizo");
@@ -27,6 +34,15 @@ public class Hopital {
         case "3":
             NurseRegistro();
             break;
+        case "4":
+            MostrarNurse();
+            break;
+        case "5":
+            MostrarPaciente();
+            break;
+        case "6":
+            MostrarDoc();
+            break;
          }
          }
     }
@@ -35,11 +51,14 @@ public class Hopital {
       System.out.println("\n1. Registrar Pacientes");
       System.out.println("2. Registrar Doctores");
       System.out.println("3. Registrar Enfermeras");
+      System.out.println("4. Mostrar Enfermeras");
+      System.out.println("5. Mostrar Pacientes");
+      System.out.println("6. Mostrar Doctores");
       System.out.println("0. Salir");
       System.out.println("\nElige una opcion");}
-    static public void PacienteRegistro(){
-        Paciente[] pacientes = new Paciente[1];
-        Paciente[] guardar = new Paciente[1];
+     public static void PacienteRegistro(){
+      //Paciente[] pacientes = new Paciente[1];
+      //Paciente[] savePaciente = new Paciente[1];
        Scanner scan = new Scanner(System.in);
        Scanner scaNum = new Scanner(System.in);
 for(int i=0; i<pacientes.length; i++){
@@ -67,17 +86,19 @@ for(int i=0; i<pacientes.length; i++){
 pacientes[i] = new Paciente(cumple,peso,altura,sangre,id,name,email,dirrecion,numero);
 
 if(SN.equals("Si") || SN.equals("si")){
-guardar=new Paciente[pacientes.length];
+savePaciente=new Paciente[pacientes.length];
 
 for(int j=0; j<pacientes.length; j++){
-  guardar[j]=pacientes[j];}
+  savePaciente[j]=pacientes[j];}
  pacientes=new Paciente[pacientes.length+1];
   for(int k=0; k<pacientes.length-1; k++){
-  pacientes[k]=guardar[k];}
-}else{break;}
+  pacientes[k]=savePaciente[k];}
+}else{break;
 }
 
-System.out.println("------- Pacientes Registrados -------");
+}
+
+/*System.out.println("------- Pacientes Registrados -------");
 
 for(int i=0; i<pacientes.length; i++){
     System.out.println("ID "+pacientes[i].id+"  "
@@ -88,14 +109,14 @@ for(int i=0; i<pacientes.length; i++){
             +"Peso "+pacientes[i].peso+"  "
             +"Altura "+pacientes[i].altura+"  "
             +"Sangre "+pacientes[i].sangre);
-            }
+            }*/
     
     }
     
     
-     static public  void NurseRegistro(){
-     Nurse[] enfermeras = new Nurse[1];
-     Nurse[] guardar = new Nurse[1];
+      public static void NurseRegistro(){
+    //Nurse[] enfermeras = new Nurse[1];
+    //Nurse[] saveNurse = new Nurse[1];
     Scanner scan = new Scanner(System.in);
     Scanner scaNum = new Scanner(System.in);
  for(int i=0; i<enfermeras.length; i++){
@@ -116,29 +137,29 @@ for(int i=0; i<pacientes.length; i++){
 enfermeras[i] = new Nurse(especialidad,id,name,email,dirrecion,numero);
 
 if(SN.equals("Si") || SN.equals("si")){
-guardar=new Nurse[enfermeras.length];
-
+saveNurse=new Nurse[enfermeras.length];
 for(int j=0; j<enfermeras.length; j++){
-  guardar[j]=enfermeras[j];}
+  saveNurse[j]=enfermeras[j];}
  enfermeras=new Nurse[enfermeras.length+1];
   for(int k=0; k<enfermeras.length-1; k++){
-  enfermeras[k]=guardar[k];}
+  enfermeras[k]=saveNurse[k];}
 }else{break;}
-    }
- System.out.println("------- Enfermeras Registrados -------");
- for(int i=0; i<enfermeras.length; i++){
-    System.out.println("ID "+enfermeras[i].id+"  "
-            +"Nombre "+enfermeras[i].name+"  "
-            +"Dirreccion "+enfermeras[i].dirrecion+"  "
-            +"Email "+enfermeras[i].email+"  "
-            +"Telefono"+enfermeras[i].numero+"  "
-            +"Especialidad "+enfermeras[i].specialidad+"  "
+ }
+    /* System.out.println("------- Enfermeras Registrados -------");
+ for(int n=0; n<enfermeras.length; n++){
+    System.out.println("ID "+enfermeras[n].id+"  "
+            +"Nombre "+enfermeras[n].name+"  "
+            +"Dirreccion "+enfermeras[n].dirrecion+"  "
+            +"Email "+enfermeras[n].email+"  "
+            +"Telefono"+enfermeras[n].numero+"  "
+            +"Especialidad "+enfermeras[n].specialidad+"  "
             );
-            }
+            }*/
      }
-     static public  void DocRegistro(){
-      Doctor[] doc = new Doctor[1];
-      Doctor[] guardar = new Doctor[1];
+    
+      public static  void DocRegistro(){
+    //Doctor[] doc = new Doctor[1];
+   // Doctor[] saveDoc = new Doctor[1];
       Scanner scan = new Scanner(System.in);
       Scanner scaNum = new Scanner(System.in);
      for(int i=0; i<doc.length; i++){
@@ -159,16 +180,16 @@ for(int j=0; j<enfermeras.length; j++){
 doc[i] = new Doctor(especialidad,id,name,email,dirrecion,numero);
 
 if(SN.equals("Si") || SN.equals("si")){
-guardar=new Doctor[doc.length];
+saveDoc=new Doctor[doc.length];
 
 for(int j=0; j<doc.length; j++){
-  guardar[j]=doc[j];}
+  saveDoc[j]=doc[j];}
  doc=new Doctor[doc.length+1];
   for(int k=0; k<doc.length-1; k++){
-  doc[k]=guardar[k];}
+  doc[k]=saveDoc[k];}
 }else{break;}
     }
-     System.out.println("------- Doctores Registrados -------");
+    /* System.out.println("------- Doctores Registrados -------");
     for(int i=0; i<doc.length; i++){
     System.out.println("ID "+doc[i].id+"  "
             +"Nombre "+doc[i].name+"  "
@@ -177,6 +198,42 @@ for(int j=0; j<doc.length; j++){
             +"Telefono"+doc[i].numero+"  "
             +"Especialidad "+doc[i].specialidad+"  "
             );
-            }
+            }*/
     }
-}
+  public static  void MostrarDoc(){
+   
+   System.out.println("------- Doctores Registrados -------");
+    for(int i=0; i<doc.length; i++){
+    System.out.println("ID "+doc[i].id+"  "
+            +"Nombre "+doc[i].name+"  "
+            +"Dirreccion "+doc[i].dirrecion+"  "
+            +"Email "+doc[i].email+"  "
+            +"Telefono"+doc[i].numero+"  "
+            +"Especialidad "+doc[i].specialidad+"  "
+            );}
+  }
+    public static  void MostrarPaciente(){
+        System.out.println("------- Pacientes Registrados -------");
+   for(int i=0; i<pacientes.length; i++){
+    System.out.println("ID "+pacientes[i].id+"  "
+            +"Nombre "+pacientes[i].name+"  "
+            +"Dirreccion "+pacientes[i].dirrecion+"  "
+            +"Email "+pacientes[i].email+"  "
+            +"Telefono"+pacientes[i].numero+"  "
+            +"Peso "+pacientes[i].peso+"  "
+            +"Altura "+pacientes[i].altura+"  "
+            +"Sangre "+pacientes[i].sangre);} }
+   
+   public static  void MostrarNurse(){
+   System.out.println("------- Enfermeras Registrados -------");
+ for(int n=0; n<enfermeras.length; n++){
+    System.out.println("ID "+enfermeras[n].id+"  "
+            +"Nombre "+enfermeras[n].name+"  "
+            +"Dirreccion "+enfermeras[n].dirrecion+"  "
+            +"Email "+enfermeras[n].email+"  "
+            +"Telefono"+enfermeras[n].numero+"  "
+            +"Especialidad "+enfermeras[n].specialidad+"  "
+            );}}
+  }
+  } 
+
